@@ -253,7 +253,7 @@
 
                 .pricing-title {
                     font-size: 2.5rem;
-                    font-weight: 700;
+                    font-weight: 500;
                     color: var(--secondary-color);
                     margin-bottom: 1rem;
                     background: linear-gradient(to right, #6f42c1, #3a1c71);
@@ -271,7 +271,7 @@
 
                 .highlight {
                     color: var(--primary-color);
-                    font-weight: 600;
+                    font-weight: 500;
                 }
 
                 /* Pricing Plans Scroll Container */
@@ -302,7 +302,7 @@
                     background: var(--white);
                     border-radius: 16px;
                     width: 390px;
-                    min-width: 280px;
+                    min-width: 285px;
                     overflow: hidden;
                     transition: all 0.3s ease;
                     display: flex;
@@ -332,7 +332,7 @@
                     color: white;
                     padding: 0.25rem 2rem;
                     font-size: 0.8rem;
-                    font-weight: bold;
+                    font-weight: 500;
                     transform: rotate(45deg);
                     transform-origin: center;
                     z-index: 1;
@@ -353,16 +353,17 @@
                 .card-header h3 {
                     font-size: 1.5rem;
                     margin-bottom: 1rem;
-                    font-weight: 700;
+                    font-weight: 500;
                 }
 
                 .price {
                     margin-bottom: 1rem;
+                    position: relative;
                 }
 
                 .price .amount {
                     font-size: 2.5rem;
-                    font-weight: 700;
+                    font-weight: 500;
                     color: var(--primary-color);
                 }
 
@@ -371,6 +372,7 @@
                 }
 
                 .price .currency {
+                    top: 5px;
                     font-size: 1.2rem;
                     font-weight: 500;
                     margin-left: 2px;
@@ -465,7 +467,7 @@
                     padding: 0.75rem;
                     border: none;
                     border-radius: 8px;
-                    font-weight: 600;
+                    font-weight: 500;
                     cursor: pointer;
                     overflow: hidden;
                     transition: all 0.3s ease;
@@ -560,8 +562,8 @@
 
                 @media (max-width: 480px) {
                     .pricing-card {
-                        width: 260px;
-                        min-width: 260px;
+                        width: 285px;
+                        min-width: 285px;
                     }
                 }
             </style>
@@ -655,10 +657,10 @@
             </div>
         </div> -->
 
-        <div id="getStartedModal" class="modal" style="display: block;">
+        <div id="getStartedModal" class="modal">
             <div class="modal-overlay"></div>
             <div class="modal-card">
-                <div class="modal-header">
+                <div class="pricing-modal-header">
                     <h3 class="modal-title">Get Started with <span class="plan-name">Premium</span></h3>
                     <span class="close-btn">&times;</span>
                 </div>
@@ -686,23 +688,24 @@
                                     <i class="fas fa-phone"></i>
                                 </div>
 
+                            </div>
+
+                            <!-- Right Column -->
+                            <div class="form-column">
                                 <div class="form-group floating">
                                     <input type="text" id="store-name" required>
                                     <label for="store-name">Store Name</label>
                                     <i class="fas fa-store"></i>
                                 </div>
-                            </div>
 
-                            <!-- Right Column -->
-                            <div class="form-column">
                                 <div class="form-group floating domain-group">
                                     <input type="text" id="store-Domain" required>
                                     <label for="store-Domain">Desired Domain</label>
                                     <i class="fas fa-globe"></i>
-                                    <button type="button" id="checkDomainBtn" class="domain-check">
+                                    <!-- <button type="button" id="checkDomainBtn" class="domain-check">
                                         <i class="fas fa-search"></i> Check
                                     </button>
-                                    <small id="domainStatus" class="domain-status"></small>
+                                    <small id="domainStatus" class="domain-status"></small> -->
                                 </div>
 
                                 <!-- <div class="form-group floating">
@@ -806,7 +809,7 @@
                 max-width: 95%;
                 max-height: 90vh;
                 background: var(--white);
-                border-radius: 16px;
+                border-radius: 8px;
                 box-shadow: var(--modal-shadow);
                 overflow: hidden;
                 display: flex;
@@ -821,9 +824,9 @@
             }
 
             /* Modal Header */
-            .modal-header {
+            .pricing-modal-header {
                 padding: 1.5rem 2rem;
-                background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+                background: linear-gradient(149deg, #f0e7ff 0%, #510ddade 100%);
                 color: var(--white);
                 display: flex;
                 justify-content: space-between;
@@ -831,14 +834,14 @@
             }
 
             .modal-title {
+                color: #381a6f;
                 font-size: 1.5rem;
-                font-weight: 700;
+                font-weight: 500;
                 margin: 0;
             }
 
             .plan-name {
-                font-weight: 800;
-                text-transform: uppercase;
+                font-weight: 500;
                 letter-spacing: 1px;
             }
 
@@ -854,10 +857,35 @@
                 opacity: 0.8;
             }
 
-            /* Modal Body */
             .modal-body {
                 padding: 2rem;
                 overflow-y: auto;
+
+                /* For WebKit browsers (Chrome, Safari) */
+                &::-webkit-scrollbar {
+                    width: 1px;
+                    /* Minimum usable width */
+                }
+
+                &::-webkit-scrollbar-button {
+                    display: none !important;
+                    /* Removes arrows */
+                    height: 0;
+                    width: 0;
+                }
+
+                &::-webkit-scrollbar-thumb {
+                    background-color: rgba(110, 66, 193, 0);
+                    border-radius: 1px;
+                }
+
+                &::-webkit-scrollbar-track {
+                    background: transparent;
+                }
+
+                /* For Firefox */
+                scrollbar-width: thin;
+                scrollbar-color: rgba(110, 66, 193, 0) transparent;
             }
 
             .modal-form {
@@ -914,6 +942,7 @@
                 left: 1rem;
                 font-size: 0.8rem;
                 color: var(--primary-color);
+                font-weight: 500;
             }
 
             .form-group.floating input:focus~i,
@@ -929,9 +958,11 @@
                 width: 100%;
                 padding: 1rem 1rem 1rem 2.5rem;
                 border: 1px solid #ddd;
-                border-radius: 8px;
+                border-radius: 5px;
                 font-size: 1rem;
                 transition: var(--transition);
+                color: #232325e6;
+                font-weight: 500;
             }
 
             .form-group textarea {
@@ -1007,7 +1038,7 @@
                 border: none;
                 border-radius: 8px;
                 font-size: 1rem;
-                font-weight: 600;
+                font-weight: 500;
                 cursor: pointer;
                 overflow: hidden;
                 transition: var(--transition);
@@ -1062,6 +1093,7 @@
             }
 
             .modal-features h4 {
+                font-weight: 500;
                 margin-bottom: 1rem;
                 color: var(--secondary-color);
             }
@@ -1092,7 +1124,7 @@
                     grid-template-columns: 1fr;
                 }
 
-                .modal-header {
+                .pricing-modal-header {
                     padding: 1rem 1.5rem;
                 }
 
@@ -1104,42 +1136,52 @@
                     grid-template-columns: 1fr;
                 }
             }
+
+            /* Add these styles for validation */
+            .is-invalid {
+                border-color: #dc3545 !important;
+            }
+
+            .is-invalid:focus {
+                box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25) !important;
+            }
+
+            .invalid-feedback {
+                display: none;
+                width: 100%;
+                margin-top: 0.25rem;
+                font-size: 0.875em;
+                color: #dc3545;
+            }
+
+            .is-invalid~.invalid-feedback {
+                display: block;
+            }
         </style>
 
 
-        <script>
+
+        <!-- <script>
             // Sample script to handle modal interactions
             document.addEventListener('DOMContentLoaded', function () {
-                const modal = document.getElementById('getStartedModal');
-                const closeBtn = document.querySelector('.close-btn');
+                // const modal = document.getElementById('getStartedModal');
+                // const closeBtn = document.querySelector('.close-btn');
 
-                // Close modal
-                closeBtn.addEventListener('click', function () {
-                    modal.classList.remove('show');
-                    setTimeout(() => {
-                        modal.style.display = 'none';
-                    }, 300);
-                });
+                // // Close modal
+                // closeBtn.addEventListener('click', function () {
+                //     modal.classList.remove('show');
+                //     setTimeout(() => {
+                //         modal.style.display = 'none';
+                //     }, 300);
+                // });
 
-                // Show modal (for demonstration)
-                setTimeout(() => {
-                    modal.classList.add('show');
-                }, 100);
+                // // Show modal (for demonstration)
+                // setTimeout(() => {
+                //     modal.classList.add('show');
+                // }, 100);
 
-                // Domain check button
-                const domainCheckBtn = document.getElementById('checkDomainBtn');
-                const domainStatus = document.getElementById('domainStatus');
+                // // Domain check button
 
-                domainCheckBtn.addEventListener('click', function () {
-                    domainStatus.textContent = "Checking availability...";
-                    domainStatus.style.color = "#6f42c1";
-
-                    // Simulate API call
-                    setTimeout(() => {
-                        domainStatus.textContent = "Domain is available!";
-                        domainStatus.style.color = "#28a745";
-                    }, 1500);
-                });
 
                 // Form submission
                 const form = document.getElementById('pricingForm');
@@ -1174,70 +1216,166 @@
                     }, 2000);
                 });
             });
-        </script>
+        </script> -->
 
     </main>
+
+
+
     <script>
-
         document.addEventListener("DOMContentLoaded", function () {
-
-            // Modal logic
+            // Modal elements
             const modal = document.getElementById("getStartedModal");
             const closeBtn = document.querySelector(".close-btn");
             const getStartedButtons = document.querySelectorAll(".get-started-button");
             const planTypeInput = document.getElementById("PlanType");
+            const planNameElements = document.querySelectorAll(".plan-name");
+            const modalFeaturesList = document.querySelector(".modal-features ul");
+            const form = document.getElementById("pricingForm");
+            const submitBtn = document.getElementById("submit-req");
+            const submitText = document.getElementById("submit-text");
+            const preloader = document.getElementById("preloader");
+
+            // Plan features data
+            const planFeatures = {
+                "Basic": [
+                    "3% total sales tax",
+                    "Appearance on Elite-gate site",
+                    "High performance speed"
+                ],
+                "Standard": [
+                    "1.5% total sales tax",
+                    "Appearance on Elite-gate site",
+                    "High performance speed"
+                ],
+                "Premium": [
+                    "0.5% total sales tax",
+                    "Free domain (.shop/.store)",
+                    "Mobile app included",
+                    "High performance speed"
+                ],
+                "Platinum": [
+                    "0% total sales tax",
+                    "Private back-end access",
+                    "Free domain (.shop/.store)",
+                    "Ultimate performance speed",
+                    "Premium hosting",
+                    "Mobile app included"
+                ]
+            };
 
             // Open modal and set selected plan
             getStartedButtons.forEach(button => {
                 button.addEventListener("click", function (event) {
                     event.preventDefault();
+                    const selectedPlan = this.getAttribute("plan-type");
 
-                    const selectedPlan = this.getAttribute("plan-type");  // Make sure `plan-type` attribute is used correctly
+                    // Set plan type in form
                     planTypeInput.value = selectedPlan;
-                    planTypeInput.innerText = selectedPlan;
 
+                    // Update all plan name displays
+                    planNameElements.forEach(el => {
+                        el.textContent = selectedPlan;
+                    });
 
-                    // Open the modal
-                    modal.style.display = "block";
+                    // Update plan features
+                    updatePlanFeatures(selectedPlan);
+
+                    // Show modal
+                    modal.classList.add("show");
+                    document.body.style.overflow = "hidden";
                 });
             });
 
             // Close modal when close button is clicked
             closeBtn.addEventListener("click", function () {
-                modal.style.display = "none";
+                closeModal();
             });
 
             // Close modal when clicking outside the modal content
-            window.addEventListener("click", function (event) {
+            modal.addEventListener("click", function (event) {
                 if (event.target === modal) {
-                    modal.style.display = "none";
+                    closeModal();
                 }
             });
 
+            // Update plan features function
+            function updatePlanFeatures(plan) {
+                modalFeaturesList.innerHTML = "";
+                planFeatures[plan].forEach(feature => {
+                    const li = document.createElement("li");
+                    li.innerHTML = `<i class="fas fa-check"></i> ${feature}`;
+                    modalFeaturesList.appendChild(li);
+                });
+            }
+
+            // Close modal function
+            function closeModal() {
+                modal.classList.remove("show");
+                document.body.style.overflow = "";
+            }
+
+            // Form validation function
+            function validateForm() {
+                const requiredFields = [
+                    document.getElementById("fullName"),
+                    document.getElementById("email"),
+                    document.getElementById("phone"),
+                    document.getElementById("store-name"),
+                    document.getElementById("store-Details")
+                ];
+
+                let isValid = true;
+
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        field.classList.add("is-invalid");
+                        isValid = false;
+                    } else {
+                        field.classList.remove("is-invalid");
+                    }
+                });
+
+                return isValid;
+            }
+
+            // Add input event listeners to clear validation errors
+            form.querySelectorAll("input, textarea").forEach(input => {
+                input.addEventListener("input", function () {
+                    if (this.value.trim()) {
+                        this.classList.remove("is-invalid");
+                    }
+                });
+            });
+
             // Handle form submission
-            document.getElementById("submit-req").addEventListener("click", async function (event) {
+            form.addEventListener("submit", async function (event) {
                 event.preventDefault();
 
+                // Validate form before submission
+                if (!validateForm()) {
+                    Swal.fire('Error!', 'Please fill in all required fields.', 'error');
+                    return;
+                }
+
+                // Show loading state
+                submitText.textContent = "Processing...";
+                preloader.classList.remove("hidden");
+                submitBtn.disabled = true;
+
                 // Get form data
-                const form = document.getElementById("pricingForm");
-                const plan = document.getElementById("PlanType").value;
-                const formData = new FormData(form);
+                const plan = planTypeInput.value;
                 const data = {
                     email: document.getElementById("email").value,
                     name: document.getElementById("fullName").value,
                     phone: document.getElementById("phone").value,
                     "store-name": document.getElementById("store-name").value,
-                    "cloud-id": document.getElementById("cloud-id").value,
+                    "store-domain": document.getElementById("store-Domain").value,
                     "store-details": document.getElementById("store-Details").value,
-                    plan: plan  // Use the value of the hidden input to send the plan type
+                    plan: plan
                 };
 
-                // Show preloader
-                document.getElementById("preloader").classList.remove("hidden");
-                document.getElementById("submit-text").style.display = "none";
-
                 try {
-                    // Send data as JSON to the specified URL
                     const response = await fetch('https://matager-f1f00-default-rtdb.firebaseio.com/requests.json', {
                         method: 'POST',
                         headers: {
@@ -1250,24 +1388,32 @@
                         throw new Error('Network response was not ok');
                     }
 
+                    // Show success state
+                    submitText.textContent = "Registration Complete!";
+                    preloader.classList.add("hidden");
+
                     // Show success message
                     Swal.fire('Success!', 'Your request has been submitted.', 'success');
+
+                    // Close modal after delay
+                    setTimeout(() => {
+                        closeModal();
+                        form.reset();
+                        submitText.textContent = "Complete Registration";
+                        submitBtn.disabled = false;
+                    }, 1500);
+
                 } catch (error) {
-                    // Show error message
+                    // Show error state
+                    submitText.textContent = "Complete Registration";
+                    preloader.classList.add("hidden");
+                    submitBtn.disabled = false;
+
                     Swal.fire('Error!', 'Something went wrong. Please try again.', 'error');
-                } finally {
-                    // Hide preloader and close the modal
-                    document.getElementById("preloader").classList.add("hidden");
-                    document.getElementById("submit-text").style.display = "block";
-                    modal.style.display = "none";
-                    form.reset();  // Reset the form after submission
                 }
             });
         });
-
-
     </script>
-
 </body>
 
 </html>
