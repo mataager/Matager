@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Matager Docs</title>
+    <link rel="icon" href="./assets/img/favicons/favicon.png" type="image/x-icon">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700&amp;family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,300&amp;display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="./assets/css/theme.css" rel="stylesheet">
+
+    <link href="assets/css/theme.css" rel="stylesheet" />
+    <link href="assets/css/pricing.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="assets/js/main.js"></script>
+
+</head>
+
+
+<body>
+    <div id="overlay"></div>
+    <main class="main" id="top">
+        <nav class="navbar navbar-expand-lg navbar-light center  py-3 ">
+            <div><a class="navbar-brand" href="./docs.html">
+                    <!-- <img src="assets/img/icons/Logo.svg" height="35"alt="logo" /> -->
+                    <img src="assets/img/icons/docs.svg" height="50" alt="logo" />
+                    <!-- <h4>matager</h4> -->
+                </a>
+                <button style="display: none;" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation"><span
+                        class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
+
+                </div>
+            </div>
+        </nav>
+
+        <section class="pt-4 px-4">
+            <div class="">
+                <div class="row">
+                    <!-- Sidebar Navigation -->
+                    <div class="col-md-3">
+                        <div id="sidebar">
+                            <button id="toggleSidebar" class=" mb-3 side-bar-btn"><i class="bi bi-list"></i></button>
+                            <button id="closeSidebar" class=" mb-3 side-bar-btn"><i class="bi bi-x"></i></button>
+                            <nav class="d-flex docs-collapse flex-column">
+                                <div class="fw-bold pointer flex flex-between-center" data-bs-toggle="collapse"
+                                    data-bs-target="#intro-section">
+                                    <h5 class="m-0">
+                                        <i class="fa-solid fa-house me-2"></i>
+                                        Introduction
+                                    </h5>
+                                    <i class="bi bi-caret-right-fill text-primary"></i>
+                                </div>
+                                <ul id="intro-section" class="nav collapse">
+                                    <div class="flex flex-column gap-2 ml-10">
+                                        <li class="nav-item mb-2 mt-3" data-target="Gettingstarted">
+                                            <a href="#">Getting started</a>
+                                        </li>
+                                        <li class="nav-item mb-2 mt-2" data-target="imagescloud">
+                                            <a href="#">Images Cloud</a>
+                                        </li>
+                                        <li class="nav-item mb-2 mt-2" data-target="webstore-docs">
+                                            <a href="#">Web Store</a>
+                                        </li>
+                                        <li class="nav-item mb-2 mt-2" data-target="MatagerAccount-docs">
+                                            <a href="#">Matager Account</a>
+                                        </li>
+                                    </div>
+                                </ul>
+                            </nav>
+                            <nav class="d-flex docs-collapse flex-column">
+                                <div class="fw-bold pointer flex flex-between-center" data-bs-toggle="collapse"
+                                    data-bs-target="#profile-section">
+                                    <h5 class="m-0">
+                                        <i class="fa-solid fa-user me-2"></i>
+                                        Profile
+                                    </h5>
+                                    <i class="bi bi-caret-right-fill text-primary"></i>
+                                </div>
+                                <ul id="profile-section" class="nav collapse">
+                                    <div class="flex flex-column gap-2 ml-10">
+                                        <li class="nav-item mb-2 mt-3" data-target="profile-docs">
+                                            <a href="#">Overview</a>
+                                        </li>
+                                    </div>
+                                </ul>
+                            </nav>
+                            <nav class="d-flex docs-collapse flex-column">
+                                <div class="fw-bold pointer flex flex-between-center" data-bs-toggle="collapse"
+                                    data-bs-target="#product-section">
+                                    <h5 class="m-0"><i class="fa-solid fa-shirt me-2"></i>Products</h5>
+                                    <i class="bi bi-caret-right-fill text-primary"></i>
+                                </div>
+                                <ul id="product-section" class="nav flex-column collapse gap-2">
+                                    <div class="flex flex-column gap-2 ml-10">
+                                        <li class="nav-item mb-2 mt-3" data-target="AddProduct">
+                                            <a href="#">Add Product</a>
+                                        </li>
+                                        <li class="nav-item mb-2 mt-2" data-target="EditProduct">
+                                            <a href="#">Edit Product</a>
+                                        </li>
+                                        <li class="nav-item mb-2 mt-2" data-target="DeleteProduct">
+                                            <a href="#">Delete Product</a>
+                                        </li>
+                                    </div>
+                                </ul>
+                            </nav>
+                            <nav class="d-flex docs-collapse flex-column">
+                                <div class="fw-bold pointer flex flex-between-center" data-bs-toggle="collapse"
+                                    data-bs-target="#orders-section">
+                                    <h5 class="m-0">
+                                        <i class="fa-solid fa-dolly me-2"></i>
+                                        Orders
+                                    </h5>
+                                    <i class="bi bi-caret-right-fill text-primary"></i>
+                                </div>
+                                <ul id="orders-section" class="nav flex-column collapse gap-2">
+                                    <div class="flex flex-column gap-2 ml-10">
+                                        <li class="nav-item mb-2 mt-3" data-target="Orderstypes">
+                                            <a href="#">Orders types</a>
+                                        </li>
+                                        <li class="nav-item mb-2 mt-2" data-target="Ordersdetails">
+                                            <a href="#">Orders details</a>
+                                        </li>
+                                        <li class="nav-item mb-2 mt-2" data-target="Orderssearch">
+                                            <a href="#">Search order</a>
+                                        </li>
+                                        <li class="nav-item mb-2 mt-2" data-target="Acceptorder">
+                                            <a href="#">Accept order</a>
+                                        </li>
+                                        <li class="nav-item mb-2 mt-2" data-target="Cancelorder">
+                                            <a href="#">Cancel order</a>
+                                        </li>
+                                        <li class="nav-item mb-2 mt-2" data-target="Orderinvoice">
+                                            <a href="#">Order invoice</a>
+                                        </li>
+                                    </div>
+                                </ul>
+
+                            </nav>
+                            <nav class="d-flex docs-collapse flex-column">
+                                <div class="fw-bold pointer flex flex-between-center" data-bs-toggle="collapse"
+                                    data-bs-target="#balance-section">
+                                    <h5 class="m-0">
+                                        <i class="fa-solid fa-dollar-sign me-2"></i>
+                                        Balance
+                                    </h5>
+                                    <i class="bi bi-caret-right-fill text-primary"></i>
+                                </div>
+                                <ul id="balance-section" class="nav flex-column collapse gap-2">
+                                    <div class="flex flex-column gap-2 ml-10">
+                                        <li class="nav-item mb-2 mt-3" data-target="BalanceOverview">
+                                            <a href="#">Overview</a>
+                                        </li>
+                                    </div>
+                                </ul>
+
+                            </nav>
+                            <nav class="d-flex docs-collapse flex-column">
+                                <div class="fw-bold pointer flex flex-between-center" data-bs-toggle="collapse"
+                                    data-bs-target="#customer-service-section">
+                                    <h5 class="m-0">
+                                        <i class="fa-solid fa-headset me-2"></i>
+                                        Customer Service
+                                    </h5>
+                                    <i class="bi bi-caret-right-fill text-primary"></i>
+                                </div>
+                                <ul id="customer-service-section" class="nav flex-column collapse gap-2">
+                                    <div class="flex flex-column gap-2 ml-10">
+                                        <li class="nav-item mb-2 mt-3" data-target="CustomerServiceOverview">
+                                            <a href="#">Overview</a>
+                                        </li>
+                                    </div>
+                                </ul>
+
+                            </nav>
+                            <nav class="d-flex docs-collapse flex-column">
+                                <div class="fw-bold pointer flex flex-between-center" data-bs-toggle="collapse"
+                                    data-bs-target="#reporting-section">
+                                    <h5 class="m-0">
+                                        <i class="fa-solid fa-bullhorn me-2"></i>
+                                        Reporting
+                                    </h5>
+                                    <i class="bi bi-caret-right-fill text-primary"></i>
+                                </div>
+                                <ul id="reporting-section" class="nav flex-column collapse gap-2">
+                                    <div class="flex flex-column gap-2 ml-10">
+                                        <li class="nav-item mb-2 mt-3" data-target="ReportingOverview">
+                                            <a href="#">Overview</a>
+                                        </li>
+                                    </div>
+                                </ul>
+
+                            </nav>
+                        </div>
+                    </div>
+                    <!-- Main Content -->
+                    <div class="col-md-9">
+
+
+                        <!-- Article Section -->
+                        <div class="mb-4 article-section" id="GettingStarted">
+                            <h4 class="fw-semibold title-docs"><i class="fa-solid fa-house me-2"></i>Getting Started
+                            </h4>
+                            <p>Follow these simple <strong>5</strong> steps to get started:</p>
+                            <ol class="p-0 flex flex-column gap-3" id="Gettingstarted">
+                                <h5 class="mt-3">Getting Started</h5>
+                                <li>
+                                    1-Visit our <a href="./pricing.html">pricing page</a> to explore available plans.
+                                </li>
+                                <li>
+                                    <img class="available-width docs-img" src="./assets/img/docs/pricing page.png">
+                                </li>
+                                <div class="alert alert-warning d-flex align-items-center" role="alert">
+                                    <i class="fas fa-exclamation-triangle me-2"></i>
+                                    <div>
+                                        The price and features of plans may change from
+                                        time to time.
+                                        We recommend reviewing the details before making a selection.
+                                    </div>
+
+                                </div>
+                                <li>
+                                    2-Select the plan that best suits your needs.
+                                </li>
+                                <li>
+                                    3-Click on the <strong>Get Started</strong> button.
+                                </li>
+                                <li>
+                                    4-Fill out the form and hit <strong>Submit</strong>.
+                                </li>
+                                <li>
+                                    <img class="available-width docs-img" src="./assets/img/docs/plan-form.jpg">
+                                </li>
+                                <div class="alert alert-info d-flex align-items-center" role="alert">
+                                    <i class="bi bi-info-circle me-2"></i>
+                                    <div>
+                                        Please ensure you have entered a valid phone number and email address, as we
+                                        will contact you and deliver your store
+                                        based on this information.
+                                    </div>
+                                </div>
+                                <li>
+                                    5-Your request will be sent to our team. Please allow 24 to 48 hours for your site
+                                    to
+                                    be completed and
+                                    deployed.
+                                </li>
+                            </ol>
+                            <hr>
+                            <ol class="p-0 flex flex-column gap-3" id="imagescloud">
+                                <h5 class="mt-3">Images Cloud</h5>
+                                <p>Follow these simple <strong>5</strong> steps to set up your Images Cloud:</p>
+                                <li>
+                                    1. Visit <a href="https://api.imgur.com/oauth2/addclient" target="_blank">Imgur</a>
+                                    to get started.
+                                </li>
+                                <li>
+                                    <img class="available-width docs-img" src="./assets/img/docs/imgur.jpg"
+                                        alt="Imgur Registration Page">
+                                </li>
+                                <div class="alert alert-warning d-flex align-items-center" role="alert">
+                                    <i class="fas fa-exclamation-triangle me-2"></i>
+                                    <div>
+                                        Please note that the features and pricing of Imgur plans may change over time.
+                                        Review the details
+                                        carefully before proceeding.
+                                    </div>
+                                </div>
+                                <li>
+                                    2. Create an Imgur account using Google or any other preferred method.
+                                </li>
+                                <li>
+                                    3. After logging in, you will be redirected to the <a
+                                        href="https://api.imgur.com/oauth2/addclient" target="_blank">Imgur API</a>
+                                    page.
+                                </li>
+                                <li>
+                                    <img class="available-width docs-img" src="./assets/img/docs/addclient.png"
+                                        alt="Imgur API Client Registration">
+                                </li>
+                                <li>
+                                    4. Register your application using the Postman callback URL:
+                                    <strong>https://www.getpostman.com/oauth2/callback</strong>.
+                                </li>
+                                <li>
+                                    5. Fill out the required form and click <strong>Submit</strong>.
+                                </li>
+                                <li>
+                                    6. Copy the client ID displayed after successfully creating the application.
+                                </li>
+                                <div class="alert alert-info d-flex align-items-center" role="alert">
+                                    <i class="bi bi-info-circle me-2"></i>
+                                    <div>
+                                        If you lose access to the page, go to <a
+                                            href="https://imgur.com/account/settings/apps" target="_blank">Imgur
+                                            Settings</a> to retrieve your client ID.
+                                    </div>
+                                </div>
+                                <li>
+                                    <img class="available-width docs-img" src="./assets/img/docs/imgursettings.png"
+                                        alt="Imgur Settings Page">
+                                </li>
+                                <li>
+                                    7. Paste the client ID into the "Image Cloud ID" input field in the Getting Started
+                                    form.
+                                </li>
+                            </ol>
+                            <hr>
+                            <ol class="p-0 flex flex-column gap-3" id="webstore-docs">
+                                <h5 class="mt-3">Web Store</h5>
+                                <li>
+                                    <strong>Personalized Store Setup:</strong> We will contact you to customize your
+                                    store's main visuals, such as the banner image, and set
+                                    up additional details like free shipping options, promotional banners, and more to
+                                    reflect your brand identity.
+                                </li>
+
+                                <li>
+                                    <strong>Comprehensive Documentation:</strong> Our detailed guides will walk you
+                                    through updating your store information, including
+                                    product details, categories, and store policies. With step-by-step instructions,
+                                    you'll quickly learn how to navigate
+                                    the system and manage your store effortlessly.
+                                </li>
+                                <li>
+                                    <strong>Thorough Testing and Seamless Launch:</strong> Once the setup is complete,
+                                    we will rigorously test your website to ensure
+                                    everything works seamlessly before launch, giving you peace of mind.
+                                </li>
+                                <li>
+                                    <strong>Ongoing Support and Updates:</strong> Enjoy regular system updates and
+                                    expert support to help you keep your store running
+                                    smoothly and adapt to new features.
+                                </li>
+
+                            </ol>
+                            <hr>
+                            <ol class="p-0 flex flex-column gap-3" id="MatagerAccount-docs">
+                                <h5 class="mt-3">Matager Account</h5>
+                                <li>
+                                    <strong>Navigate to Your Account</strong><br />
+                                    To access your account page, go to the <strong>Profile</strong> section on any
+                                    website powered by us. From
+                                    there, you can sign in or create a new account.
+                                </li>
+                                <li>
+                                    <img class="available-width docs-img"
+                                        src="./assets/img/docs/matager-account/navigate-to-account.png"
+                                        alt="Navigation to account page">
+                                </li>
+
+                                <li>
+                                    <strong>Explore Your Order History</strong><br />
+                                    Once signed in, the first section displayed will be your order history. The orders
+                                    shown are specific to the store
+                                    you are currently accessing. You can easily search for them by typing the order ID.
+                                </li>
+
+
+                                <li>
+                                    <img class="available-width docs-img"
+                                        src="./assets/img/docs/matager-account/account-orders.jpg"
+                                        alt="Account orders page overview">
+                                </li>
+                                <li>
+                                    <strong>Explore Your Favourite Items</strong><br />
+                                    To access your Favourite Items section, click on the "Favourite Items" button. The
+                                    section will display the
+                                    favourite items from the store you opened. If you want to remove an item from the
+                                    list, click on the "heartbreak"
+                                    icon <strong><i class="bi bi-heartbreak-fill"></i></strong>.<br />
+                                    If you click on the photo of an item, it will redirect you to the product details
+                                    page.
+                                </li>
+
+
+                                <li>
+                                    <img class="available-width docs-img"
+                                        src="./assets/img/docs/matager-account/favourite-items.jpg"
+                                        alt="Navigation to account page">
+                                </li>
+                                <li>
+                                    <strong>Explore Account Settings</strong><br />
+                                    Navigate to the account details section by clicking on "Account Settings."
+                                    <ul>
+                                        <li>Account settings consist of:</li>
+                                        <ul>
+                                            <li>Email address</li>
+                                            <li>First name</li>
+                                            <li>Last name</li>
+                                            <li>Phone number 1</li>
+                                            <li>Phone number 2</li>
+                                            <li>
+                                                Address (the user can add more than one address, and these addresses
+                                                will be displayed). You can choose multiple
+                                                addresses when submitting an order in the cart.
+                                            </li>
+
+                                        </ul>
+                                    </ul>
+                                </li>
+
+
+                                <li>
+                                    <img class="available-width docs-img"
+                                        src="./assets/img/docs/matager-account/account-details.jpg"
+                                        alt="Account details page overview">
+                                </li>
+                                <hr>
+                            </ol>
+                            <hr>
+                        </div>
+
+
+                        <div class="mb-4 article-section" id="profile-docs" style="display: none;">
+                            <h4 class="fw-semibold title-docs"><i class="fa-solid fa-user me-2"></i> Profile</h4>
+                            <ol class="p-0 flex flex-column gap-3">
+                                <li>
+                                    <strong>Navigate to Your Profile</strong><br />
+                                    To access your profile page, click on the circular icon located at the top left
+                                    corner of the screen. From the
+                                    dropdown menu, select <strong>Profile</strong>.
+                                </li>
+                                <li>
+                                    <img class="available-width docs-img" src="./assets/img/docs/profile/dropdown.png"
+                                        alt="Profile dropdown menu">
+                                </li>
+                                <hr>
+                                <li>
+                                    <strong>Profile Details</strong><br />
+                                    Below is an overview of the key information displayed on your profile page:
+                                    <ul>
+                                        <li><strong>UID:</strong> This is your unique account and store identifier in
+                                            the system's database.</li>
+                                        <li><strong>Plan Type:</strong> Displays your current plan type, which
+                                            determines the commission percentage
+                                            set by the system.</li>
+                                        <li><strong>Ending At:</strong> Indicates the expiry date of your store. New
+                                            users receive a complimentary 1
+                                            month and 5 days of free service as a welcome gift.</li>
+                                        <li><strong>Matager Commission:</strong> Displays the commission amount deducted
+                                            by the system for each
+                                            <strong>completed</strong> order.
+                                        </li>
+                                        <li><strong>Last Signed In:</strong> Shows the date and time of your most recent
+                                            login.</li>
+                                        <li><strong>Role:</strong> Indicates your role in the system. As a store admin,
+                                            your role will be listed as
+                                            <strong>Store Admin</strong>.
+                                        </li>
+                                        <li><strong>Username:</strong> Displays your registered username.</li>
+                                        <li><strong>Password:</strong> Displays your account password.</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <img class="available-width docs-img"
+                                        src="./assets/img/docs/profile/admin-profile.png" alt="Admin profile overview">
+                                </li>
+                            </ol>
+
+                        </div>
+                        <div class="mb-4 article-section" id="Product-docs" style="display: none;">
+                            <h4 class="fw-semibold title-docs"><i class="fa-solid fa-shirt me-2"></i>Products</h4>
+                            <ol class="p-0 flex flex-column gap-3" id="AddProduct" style="display: none;">
+                                <h5 class="mt-3">Add Product</h5>
+                                <li>
+                                    To add a product, follow these steps:
+                                    <ul>
+                                        <li>Navigate to the <strong>Product Page</strong>.</li>
+                                        <li>Fill out the form displayed to provide complete product details, such as the
+                                            title, brand, sizes, colors,
+                                            and other relevant information.</li>
+                                        <li>Click the <strong>Plus Icon <i class="bi bi-plus-lg m-2"></i></strong> to
+                                            add
+                                            additional items, such as photos,
+                                            sizes, and colors.</li>
+                                        <li>Click <strong>Submit</strong> to upload the product to the website.</li>
+                                        <li>Below are the images to guide you through the process.</li>
+
+                                    </ul>
+                                </li>
+
+                                <img class="available-width docs-img" src="./assets/img/docs/product/1.png">
+                                </li>
+                                <li>
+                                    <img class="available-width docs-img" src="./assets/img/docs/product/2.jpg">
+                                </li>
+                                <li>
+                                    <img class="available-width docs-img" src="./assets/img/docs/product/3.jpg">
+                                </li>
+                                <li>
+                                    <img class="available-width docs-img" src="./assets/img/docs/product/4.jpg">
+                                </li>
+                                <li>
+                                    <img class="available-width docs-img" src="./assets/img/docs/product/5.jpg">
+                                </li>
+                                <li>
+                                    <img class="available-width docs-img" src="./assets/img/docs/product/6.jpg">
+                                </li>
+                            </ol>
+                            <hr>
+                            <ol class="p-0 flex flex-column gap-3" id="EditProduct" style="display: none;">
+                                <h5 class="mt-3">Edit Product</h5>
+                                <li>
+                                    To edit a product, follow these steps:
+                                    <ul>
+                                        <li>Navigate to the <strong>Product Page</strong>.</li>
+                                        <li>Click the circular button icon <i class="bi bi-folder-symlink m-2"></i> to
+                                            start the editing process.</li>
+                                        <li>Search for the item using the product ID, which can be obtained from the SKU
+                                            displayed on the product's details page
+                                            on the website.</li>
+                                        <li>Make the necessary changes or add new items by updating the fields in the
+                                            form.</li>
+                                        <li>Click the <strong>Edit</strong> button to submit and save the changes.</li>
+                                        <li>Below are images to guide you through the process:</li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <img class="available-width docs-img" src="./assets/img/docs/product/7.png">
+                                </li>
+                                <p class="m-0">
+                                    change main images for product:
+                                </p>
+                                <li>
+                                    <img class="available-width docs-img" src="./assets/img/docs/product/8.png">
+                                </li>
+                                <p class="m-0">
+                                    change images for item related to the size and color :
+                                </p>
+                                <li>
+                                    <img class="available-width docs-img" src="./assets/img/docs/product/9.png">
+                                </li>
+                                <li>
+                                    <img class="available-width docs-img" src="./assets/img/docs/product/10.png">
+                                </li>
+                            </ol>
+                            <hr>
+                            <ol class="p-0 flex flex-column gap-3" id="DeleteProduct" style="display: none;">
+                                <h5 class="mt-3">Delete Product</h5>
+                                <li>
+                                    To delete a product, follow these steps:
+                                    <ul>
+                                        <li>Navigate to the <strong>Product Page</strong>.</li>
+                                        <li>Click the circular button icon <i class="bi bi-folder-x m-2"></i> to begin
+                                            the deletion process.</li>
+                                        <li>Search for the item using the product ID, which can be obtained from the SKU
+                                            displayed on the product's
+                                            details page.</li>
+                                        <li>Click the <strong>Delete</strong> button to remove the product from the
+                                            website.</li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <img class="available-width docs-img" src="./assets/img/docs/product/11.png">
+                                </li>
+                                <li>
+                                    <img class="available-width docs-img" src="./assets/img/docs/product/12.png">
+                                </li>
+                            </ol>
+                            <hr>
+                        </div>
+                        <div class="mb-4 article-section" id="Orders-docs" style="display: none;">
+                            <h4 class="fw-semibold title-docs"><i class="fa-solid fa-dolly me-2"></i> Orders</h4>
+                            <ol class="p-0 flex flex-column gap-3" id="Orderstypes">
+                                <h5 class="fw-semibold">Orders Types</h5>
+                                <li>
+                                    There are <strong>3</strong> types of orders:
+                                    <ul>
+                                        <li><strong>Pending:</strong> Orders awaiting confirmation or action.</li>
+                                        <li><strong>Completed:</strong> Orders successfully processed and fulfilled.
+                                        </li>
+                                        <li><strong>Cancelled:</strong> Orders that have been declined or cancelled.
+                                        </li>
+                                    </ul>
+                                    Navigate between these order types by clicking on the corresponding card.
+                                </li>
+
+                                <li>
+                                    <strong>Pending</strong>
+                                    <img class="available-width docs-img"
+                                        src="./assets/img/docs/orders/pending-orders.png">
+                                </li>
+
+                                <li>
+                                    <strong>Completed</strong>
+                                    <img class="available-width docs-img"
+                                        src="./assets/img/docs/orders/completed-orders.png">
+                                </li>
+
+                                <li>
+                                    <strong>cancelled</strong>
+                                    <img class="available-width docs-img"
+                                        src="./assets/img/docs/orders/cancelled-orders.png">
+                                </li>
+                                <hr />
+                            </ol>
+                            <ol class="p-0 flex flex-column gap-3" id="Ordersdetails">
+                                <h5 class="fw-semibold">Orders Details</h5>
+                                <li>
+                                    To view the details of an order, simply click on the order row or this button <i
+                                        class="bi bi-plus-circle point m-1"></i> . The row will expand,
+                                    revealing the contents of
+                                    the order.
+                                </li>
+
+                                <li>
+                                    <img class="available-width docs-img" src="./assets/img/docs/orders/order-click.png"
+                                        alt="Order details view">
+                                </li>
+
+                                <hr />
+                            </ol>
+                            <ol class="p-0 flex flex-column gap-3" id="Orderssearch">
+                                <h5 class="fw-semibold">Orders Search</h5>
+                                <li>
+                                    To search for an order, enter the <strong>Order ID</strong>, <strong>User
+                                        Email</strong>, or <strong>Phone
+                                        Number</strong> in the search field, then click the <strong>Search</strong>
+                                    button. The order will appear in
+                                    its respective section (Pending, Accepted, or Deleted).
+                                </li>
+
+                                <li>
+                                    <img class="available-width docs-img"
+                                        src="./assets/img/docs/orders/order-search.png"
+                                        alt="Order search functionality illustration">
+                                </li>
+
+                                <hr />
+                            </ol>
+                            <ol class="p-0 flex flex-column gap-3" id="Acceptorder">
+                                <h5 class="fw-semibold">Accept Order</h5>
+                                <li>
+                                    To accept an order, ensure the following:
+                                    <ul>
+                                        <li>The items are available in your store inventory.</li>
+                                        <li>The items haven’t been sold through another channel (e.g., in-store, another
+                                            online platform).</li>
+                                        <li>The items are not missing from stock.</li>
+                                    </ul>
+                                    Once you’ve verified the above, click on the <strong>box icon<i
+                                            class="bi bi-box-fill pointer m-2"></i></strong> to accept the
+                                    order. This action will:
+                                    <ul>
+                                        <li>Move the order to the <strong>Completed Orders</strong> section.</li>
+                                        <li>Notify the customer that their order has been accepted.</li>
+                                        <li>Change the order row color to <strong>green <i class="bi bi-circle-fill"
+                                                    style="color: green;font-size: x-small;"></i></strong>, indicating
+                                            it has been
+                                            completed.</li>
+                                        <li>Transfer the system's percentage commission to the account.</li>
+                                    </ul>
+                                    To check the system’s commission percentage, navigate to your
+                                    <strong>Profile</strong>.
+                                    <br><br>
+                                    <strong>Note:</strong> Once an order is marked as completed, it cannot be canceled
+                                    by you. If cancellation is
+                                    needed, you must contact our <a href="./ourteam.html">support team</a> for
+                                    assistance.
+                                </li>
+                                <li>
+                                    <img class="available-width docs-img"
+                                        src="./assets/img/docs/orders/accept-order.png"
+                                        alt="Order search functionality illustration">
+                                </li>
+
+
+
+
+                                <hr />
+                            </ol>
+                            <ol class="p-0 flex flex-column gap-3" id="Cancelorder">
+                                <h5 class="fw-semibold">Cancel Order</h5>
+                                <li>
+                                    To cancel an order, ensure one or more of the following reasons apply:
+                                    <ul>
+                                        <li>The product is <strong>out of stock</strong> because it was sold through a
+                                            channel not associated with
+                                            the Matager platform, such as a physical store or another online
+                                            marketplace.</li>
+                                        <li>The product is <strong>missing</strong> from your store’s inventory and
+                                            cannot be restocked immediately.
+                                        </li>
+                                        <li>The customer requested to cancel the order due to personal reasons.</li>
+                                        <li>Any unforeseen circumstances that prevent you from fulfilling the order.
+                                        </li>
+                                    </ul>
+                                    Once you’ve verified the reason, click on the <strong>Cancel Icon <i
+                                            class="bi bi-x-circle pointer m-2"></i></strong> to cancel the order. This
+                                    action will:
+                                    <ul>
+                                        <li>Move the order to the <strong>Cancelled Orders</strong> section.</li>
+                                        <li>Notify the customer that their order has been cancelled.</li>
+                                        <li>Change the order row color to <strong>Red <i class="bi bi-circle-fill"
+                                                    style="color: rgb(211, 0, 0);font-size: x-small;"></i></strong>,
+                                            indicating it has been
+                                            cancelled.</li>
+                                    </ul>
+                                    <br>
+                                    <strong>Note:</strong>
+                                    <ul>
+
+                                    </ul>
+                                </li>
+                                <li>
+                                    <img class="available-width docs-img"
+                                        src="./assets/img/docs/orders/cancel-order.png"
+                                        alt="Order cancellation process illustration">
+                                </li>
+                                <hr />
+                            </ol>
+                            <ol class="p-0 flex flex-column gap-3" id="Orderinvoice">
+                                <h5 class="fw-semibold">Order Invoice</h5>
+                                <li>
+                                    To print an order invoice, ensure the order is in the <strong>Completed</strong>
+                                    state. Follow these steps:
+                                    <ul>
+                                        <li>Navigate to the <strong>Completed Orders</strong> section.</li>
+                                        <li>Click on the <strong>Print Icon <i class="bi bi-printer m-2"></i></strong>.
+                                        </li>
+                                        <li>Once clicked, the system will generate a PDF view of the order, displaying
+                                            all the relevant order
+                                            details to assist with the shipping process.</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <img class="available-width docs-img"
+                                        src="./assets/img/docs/orders/print-invoice.png"
+                                        alt="Order invoice generation illustration">
+                                </li>
+                                <strong>after clicking on print icon:</strong>
+
+                                <li>
+                                    <img class="available-width docs-img"
+                                        src="./assets/img/docs/orders/order-invoice.png"
+                                        alt="Order invoice generation illustration">
+                                </li>
+                                <hr />
+                            </ol>
+
+
+
+
+                        </div>
+                        <div class="mb-4 article-section" id="Balance-docs" style="display: none;">
+                            <h4 class="fw-semibold title-docs"><i class="fa-solid fa-dollar-sign me-2"></i>Balance</h4>
+                            <ol class="p-0 flex flex-column gap-3" id="BalanceOverview">
+                                <h5 class="mt-3">Overview</h5>
+                                <li>Navigate to the <strong>Balance Page</strong>.</li>
+                                <li>
+                                    <img class="available-width docs-img" src="./assets/img/docs/balance/Balance.png"
+                                        alt="Balance page illustration">
+                                </li>
+                                <li>
+                                    The Balance page consists of <strong>4</strong> main cards:
+                                    <ul>
+                                        <li>
+                                            <strong>Order Count</strong>: Displays the total number of completed orders.
+                                        </li>
+                                        <li>
+                                            <strong>Order Amount</strong>: Shows the total monetary value of all
+                                            completed orders.
+                                        </li>
+                                        <li>
+                                            <strong>Matager Cut</strong>: Indicates the commission percentage deducted
+                                            based on your chosen plan.
+                                        </li>
+                                        <li>
+                                            <strong>Balance</strong>: Represents the amount you will receive after the
+                                            commission is deducted.
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <img class="available-width docs-img"
+                                        src="./assets/img/docs/balance/balace-data.png" alt="Balance data illustration">
+                                </li>
+                            </ol>
+
+                        </div>
+                        <div class="mb-4 article-section" id="CustomerService-docs" style="display: none;">
+                            <h4 class="fw-semibold title-docs"><i class="fa-solid fa-headset me-2"></i>Customer Service
+                            </h4>
+                            <ol class="p-0 flex flex-column gap-3" id="CustomerServiceOverview">
+                                <h5 class="mt-3">Overview</h5>
+                                <li>Navigate to the <strong>Customer Service Page</strong>.</li>
+                                <li>
+                                    <img class="available-width docs-img"
+                                        src="./assets/img/docs/customer-service/customerservice.png"
+                                        alt="Customer Service page illustration">
+                                </li>
+                                <li>
+                                    The Customer Service page contains a single table displaying the following details:
+                                    <ul>
+                                        <li><strong>Name</strong>: The customer's name.</li>
+                                        <li><strong>Phone Number</strong>: The customer's contact number.</li>
+                                        <li><strong>Problem</strong>: A brief description of the reported issue.</li>
+                                        <li><strong>Manage</strong>: Actions you can take to handle the report (Open or
+                                            Delete).</li>
+                                    </ul>
+                                    <ul>
+                                        <li>
+                                            If the problem description is lengthy, click the <i
+                                                class="bi bi-plus-circle point m-1"></i>
+                                            <strong>Open</strong> button to view the full details in a modal.
+                                        </li>
+                                        <li>
+                                            To remove the user's report, click the <i
+                                                class="bi bi-x-circle pointer m-2"></i>
+                                            <strong>Delete</strong> button.
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <img class="available-width docs-img"
+                                        src="./assets/img/docs/customer-service/customer-service.png"
+                                        alt="Customer Service management illustration">
+                                </li>
+                            </ol>
+
+                        </div>
+                        <div class="mb-4 article-section" id="Reporting-docs" style="display: none;">
+                            <h4 class="fw-semibold title-docs"><i class="fa-solid fa-bullhorn me-2"></i>Reporting</h4>
+                            <ol class="p-0 flex flex-column gap-3" id="ReportingOverview">
+                                <h5 class="mt-3">Overview</h5>
+                                <li>Navigate to the <strong>Reporting Page</strong>.</li>
+                                <li>
+                                    <img class="available-width docs-img" src="./assets/img/docs/report/report.png"
+                                        alt="Reporting page illustration">
+                                </li>
+                                <li>
+                                    The Reporting page contains 3 input fields:
+                                    <ul>
+                                        <li><strong>UID</strong>: Your account UID (read-only).</li>
+                                        <li><strong>Email</strong>: Your email address (read-only).</li>
+                                        <li><strong>Problem</strong>: A brief description of the issue you are
+                                            reporting.</li>
+                                    </ul>
+                                    Once you've filled in the "Problem" field, click the <strong>Submit</strong> button
+                                    to send the issue to us. We
+                                    will address and resolve it as soon as possible.
+                                </li>
+                                <li>
+                                    <img class="available-width docs-img" src="./assets/img/docs/report/send-report.png"
+                                        alt="Send Report illustration">
+                                </li>
+                            </ol>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const toggles = document.querySelectorAll('[data-bs-toggle="collapse"]');
+
+                toggles.forEach(toggle => {
+                    const target = document.querySelector(toggle.dataset.bsTarget);
+                    const caretIcon = toggle.querySelector(".bi");
+
+                    if (!caretIcon) return; // Skip if there's no caret icon in the toggle element
+
+                    // Listen for the collapse animation events
+                    target.addEventListener("show.bs.collapse", () => {
+                        caretIcon.classList.remove("bi-caret-right-fill");
+                        caretIcon.classList.add("bi-caret-down-fill");
+                    });
+
+                    target.addEventListener("hide.bs.collapse", () => {
+                        caretIcon.classList.remove("bi-caret-down-fill");
+                        caretIcon.classList.add("bi-caret-right-fill");
+                    });
+                });
+            });
+
+            // Initial state
+            const sidebar = document.getElementById('sidebar');
+            const toggleSidebar = document.getElementById('toggleSidebar');
+            const closeSidebar = document.getElementById('closeSidebar');
+            const overlay = document.getElementById('overlay');
+
+            // Initially hide the close button
+            closeSidebar.classList.add('hidden');
+
+            // Toggle sidebar on toggle button click
+            toggleSidebar.addEventListener('click', () => {
+                sidebar.classList.add('open', 'sidebarmob');
+                overlay.classList.toggle('show');
+
+                if (sidebar.classList.contains('open')) {
+                    toggleSidebar.classList.add('hidden');
+                    closeSidebar.classList.remove('hidden');
+                } else {
+                    toggleSidebar.classList.remove('hidden');
+                    closeSidebar.classList.add('hidden');
+                }
+            });
+
+            // Close sidebar on close button click
+            closeSidebar.addEventListener('click', () => {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('show');
+                toggleSidebar.classList.remove('hidden');
+                closeSidebar.classList.add('hidden');
+            });
+
+            // Close sidebar on overlay click
+            overlay.addEventListener('click', () => {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('show');
+                toggleSidebar.classList.remove('hidden');
+                closeSidebar.classList.add('hidden');
+            });
+
+            document.addEventListener("DOMContentLoaded", () => {
+                const clickableElements = document.querySelectorAll("[data-target]");
+
+                clickableElements.forEach(element => {
+                    element.addEventListener("click", () => {
+                        const targetId = element.getAttribute("data-target");
+
+                        // Hide all parent sections initially
+                        const allParentSections = document.querySelectorAll("div.article-section");
+                        allParentSections.forEach(section => {
+                            section.style.display = "none";
+                        });
+
+                        // Find the target section
+                        const targetSection = document.getElementById(targetId);
+                        if (targetSection) {
+                            // Find the closest parent div and ensure it is displayed
+                            const parentSection = targetSection.closest("div.article-section");
+                            if (parentSection) {
+                                parentSection.style.display = "block"; // Display the parent section
+                            }
+
+                            // Ensure all nested <ol> in the parent section are hidden
+                            const nestedElements = parentSection.querySelectorAll("ol");
+                            nestedElements.forEach(ol => {
+                                ol.style.display = "none";
+                            });
+
+                            // Display the targeted <ol>
+                            targetSection.style.display = "block";
+
+                            // Scroll to the targeted <ol> smoothly
+                            targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
+                        }
+                    });
+                });
+            });
+
+        </script>
+
+
+    </main>
+
+
+
+</body>
+
+</html>

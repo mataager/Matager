@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>stores</title>
+    <link rel="icon" href="./assets/img/favicons/favicon.png" type="image/x-icon">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700&amp;family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,300&amp;display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <link href="assets/css/theme.css" rel="stylesheet" />
+    <link href="assets/css/pricing.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="./assets/js/inthilize.js"></script>
+
+</head>
+
+
+<body>
+
+    <main class="main" id="top">
+        <nav class="navbar navbar-expand-lg navbar-light center  py-3 ">
+            <div><a class="navbar-brand" href="index.html">
+                    <!-- <img src="assets/img/icons/Logo.svg" height="35"alt="logo" /> -->
+                    <img src="assets/img/icons/logo.svg" height="50" alt="logo" />
+                    <!-- <h4>matager</h4> -->
+                </a>
+                <button style="display: none;" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation"><span
+                        class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
+
+                </div>
+            </div>
+        </nav>
+
+        <section class="pt-10-px">
+            <div class="container pricing-container">
+                <h2 class="text-center mt-5 text-animate">Stores</h2>
+
+                <div class="row mb-4 flex center text-animate mt-5" id="stores">
+
+
+
+                </div>
+
+            </div>
+        </section>
+
+
+
+
+
+    </main>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const storesContainer = document.getElementById("stores");
+
+            // Firebase Realtime Database URL
+            const firebaseUrl = "https://matager-f1f00-default-rtdb.firebaseio.com/Stores.json";
+
+            // Fetching stores from Firebase
+            fetch(firebaseUrl)
+                .then((response) => response.json())
+                .then((data) => {
+                    // Clear the stores container before appending new data
+                    storesContainer.innerHTML = "";
+
+                    // Loop through the stores data
+                    for (const storeId in data) {
+                        if (data.hasOwnProperty(storeId)) {
+                            const storeInfo = data[storeId]["store-info"];
+
+                            // Check if store info and domain are available
+                            if (storeInfo && storeInfo["Domain"] && storeInfo["store-name"] && storeInfo["store-details"]) {
+                                const storeName = storeInfo["store-name"];
+                                const storeDetails = storeInfo["store-details"];
+                                const storeDomain = storeInfo["Domain"];
+                                const storePhoto = storeInfo["storePhoto"];
+
+                                // Create a new store card
+                                const storeCard = document.createElement("div");
+                                storeCard.className = "w-400 mb-6 animate-on-scroll show";
+                                storeCard.innerHTML = `
+              <div class="w-100 h-100 p-5 services-card-shadow rounded-4 flex flex-column align-items-center">
+                <img class="available-width mb-3" src="${storePhoto}">
+                <h4 class="mt-3 lh-base">${storeName}</h4>
+                <p class="mb-0 txt-center">${storeDetails}</p>
+                <a href="https://${storeDomain}" target="_blank" class="btn btn-sm btn-primary mt-3">Visit Store</a>
+              </div>
+            `;
+
+                                // Append the store card to the stores container
+                                storesContainer.appendChild(storeCard);
+                            }
+                        }
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error fetching stores data:", error);
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "There was an error fetching store data. Please try again later.",
+                    });
+                });
+        });
+
+    </script>
+</body>
+
+</html>
