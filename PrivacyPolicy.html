@@ -11,7 +11,7 @@
         href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700&amp;family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,300&amp;display=swap"
         rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link href="assets/css/theme.css" rel="stylesheet" />
     <link href="assets/css/pricing.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -41,65 +41,144 @@
 
         <section class="pt-10-px">
 
-            <div class="container pricing-container">
-
-                <div class="flex center text-animate">
-                    <img src="./assets/img/illustration/Privacypolicy.png" width="350px" alt="logo" />
-                </div>
-                <div class="flex center flex-column p-x5-y2 text-animate">
-                    <p class="text-center mt-1 text-animate">
-                    <h5>Google sign in</h5>
-                    <p>Matager uses Google Sign-In solely to authenticate your account for the purpose of submitting
-                        orders. Our system does
-                        not access or harm your Google account in any way. We only retrieve basic information such as
-                        your name, email address,
-                        and profile picture to streamline the order process, as guest checkouts are not permitted.
-                        Matager does not collect or
-                        store any sensitive data beyond this, ensuring your information remains secure and private.</p>
-                    <h5>Data Collection</h5>
-                    <p>
-                        Matager collects personal information such as your name, email address, phone number, and
-                        payment details when you
-                        register and use our services. This information is used to provide and improve our services.</p>
-                    <h5>Use of Information</h5>
-                    <p>
-                        We use your information to process payments, manage your account, send you updates, and improve
-                        our platform. We may
-                        also use your data for marketing purposes, but only with your consent.
-                    </p>
-                    <h5>Data Sharing</h5>
-                    <p>
-                        Matager does not sell your personal information to third parties. However, we may share data
-                        with trusted partners to
-                        help us operate our platform, such as payment processors and customer support services.
-                    </p>
-                    <h5>Data Security</h5>
-                    <p>
-                        We implement industry-standard security measures to protect your data. However, no online system
-                        is completely secure,
-                        and we cannot guarantee the absolute security of your data.
-                    </p>
-                    <h5>User Rights</h5>
-                    <p>
-                        You have the right to access, modify, or delete your personal information. You can exercise
-                        these rights by contacting
-                        our support team.
-                    </p>
-                    <h5>Policy Updates</h5>
-                    <p>
-                        Matager may update this Privacy Policy from time to time. Any changes will be posted on our
-                        website, and your continued
-                        use of the service indicates your acceptance of the updated policy.
-                    </p>
-
-
+            <div class="terms-container">
+                <div class="terms-illustration">
+                    <img src="./assets/img/illustration/Privacypolicy.png" alt="Privacy Policy Illustration"
+                        class="animated-illustration">
                 </div>
 
+                <div class="terms-content">
+                    <h2 class="terms-title">Privacy Policy</h2>
 
+                    <div class="terms-section">
+                        <div class="section-header">
+                            <div class="section-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                </svg>
+                            </div>
+                            <h3>Google Sign-In</h3>
+                        </div>
+                        <p>Matager uses Google Sign-In solely to authenticate your account for the purpose of submitting
+                            orders. Our
+                            system does not access or harm your Google account in any way. We only retrieve basic
+                            information such
+                            as your name, email address, and profile picture to streamline the order process, as guest
+                            checkouts are
+                            not permitted. Matager does not collect or store any sensitive data beyond this, ensuring
+                            your
+                            information remains secure and private.</p>
+                    </div>
 
+                    <div class="terms-section">
+                        <div class="section-header">
+                            <div class="section-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                            </div>
+                            <h3>Data Collection</h3>
+                        </div>
+                        <p>Matager collects personal information such as your name, email address, phone number, and
+                            payment details
+                            when you register and use our services. This information is used to provide and improve our
+                            services.
+                        </p>
+                    </div>
 
+                    <div class="terms-section">
+                        <div class="section-header">
+                            <div class="section-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
+                            </div>
+                            <h3>Use of Information</h3>
+                        </div>
+                        <p>We use your information to process payments, manage your account, send you updates, and
+                            improve our
+                            platform. We may also use your data for marketing purposes, but only with your consent.</p>
+                    </div>
 
+                    <div class="terms-section">
+                        <div class="section-header">
+                            <div class="section-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
+                            </div>
+                            <h3>Data Sharing</h3>
+                        </div>
+                        <p>Matager does not sell your personal information to third parties. However, we may share data
+                            with trusted
+                            partners to help us operate our platform, such as payment processors and customer support
+                            services.</p>
+                    </div>
 
+                    <div class="terms-section">
+                        <div class="section-header">
+                            <div class="section-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
+                            </div>
+                            <h3>Data Security</h3>
+                        </div>
+                        <p>We implement industry-standard security measures to protect your data. However, no online
+                            system is
+                            completely secure, and we cannot guarantee the absolute security of your data.</p>
+                    </div>
+
+                    <div class="terms-section">
+                        <div class="section-header">
+                            <div class="section-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                </svg>
+                            </div>
+                            <h3>User Rights</h3>
+                        </div>
+                        <p>You have the right to access, modify, or delete your personal information. You can exercise
+                            these rights
+                            by contacting our support team.</p>
+                    </div>
+
+                    <div class="terms-section">
+                        <div class="section-header">
+                            <div class="section-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="4 17 10 11 4 5"></polyline>
+                                    <line x1="12" y1="19" x2="20" y2="19"></line>
+                                </svg>
+                            </div>
+                            <h3>Policy Updates</h3>
+                        </div>
+                        <p>Matager may update this Privacy Policy from time to time. Any changes will be posted on our
+                            website, and
+                            your continued use of the service indicates your acceptance of the updated policy.</p>
+                    </div>
+                </div>
             </div>
         </section>
 

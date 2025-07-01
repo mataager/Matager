@@ -54,3 +54,99 @@ window.addEventListener("load", function () {
     element.classList.add("show");
   });
 });
+
+// Routing function for div buttons
+// document.addEventListener("DOMContentLoaded", function () {
+//   //make the return btn
+//   // Create the return button element
+//   const returnBtn = document.createElement("button");
+//   returnBtn.className = "return-btn";
+//   returnBtn.setAttribute("aria-label", "Return to previous page");
+
+//   // Create the icon element
+//   const icon = document.createElement("i");
+//   icon.className = "bi bi-arrow-left";
+
+//   // Add the icon to the button
+//   returnBtn.appendChild(icon);
+
+//   // Add click handler
+//   returnBtn.addEventListener("click", function () {
+//     window.history.back();
+//   });
+
+//   // Add the button to the end of the body
+//   document.body.appendChild(returnBtn);
+
+//   //
+//   // Handle click events for div buttons
+//   document.querySelectorAll(".getstarted-btn").forEach((button) => {
+//     button.addEventListener("click", function () {
+//       const href = this.getAttribute("data-href");
+//       if (href) {
+//         window.location.href = href;
+//       }
+//     });
+//   });
+
+//   // Add keyboard accessibility for div buttons
+//   document.querySelectorAll(".getstarted-btn").forEach((button) => {
+//     button.setAttribute("tabindex", "0");
+//     button.addEventListener("keypress", function (e) {
+//       if (e.key === "Enter" || e.key === " ") {
+//         const href = this.getAttribute("data-href");
+//         if (href) {
+//           window.location.href = href;
+//         }
+//       }
+//     });
+//   });
+// });
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Check if current page is not index.html
+  if (!window.location.pathname.endsWith("index.html")) {
+    // Create the return button element
+    const returnBtn = document.createElement("button");
+    returnBtn.className = "return-btn";
+    returnBtn.setAttribute("aria-label", "Return to previous page");
+
+    // Create the icon element
+    const icon = document.createElement("i");
+    icon.className = "bi bi-arrow-left";
+
+    // Add the icon to the button
+    returnBtn.appendChild(icon);
+
+    // Add click handler
+    returnBtn.addEventListener("click", function () {
+      window.history.back();
+    });
+
+    // Add the button to the end of the body
+    document.body.appendChild(returnBtn);
+  }
+
+  // Handle click events for div buttons
+  document.querySelectorAll(".getstarted-btn").forEach((button) => {
+    button.addEventListener("click", function () {
+      const href = this.getAttribute("data-href");
+      if (href) {
+        window.location.href = href;
+      }
+    });
+  });
+
+  // Add keyboard accessibility for div buttons
+  document.querySelectorAll(".getstarted-btn").forEach((button) => {
+    button.setAttribute("tabindex", "0");
+    button.addEventListener("keypress", function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        const href = this.getAttribute("data-href");
+        if (href) {
+          window.location.href = href;
+        }
+      }
+    });
+  });
+});

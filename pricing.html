@@ -10,6 +10,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700&amp;family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,300&amp;display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
     <link href="assets/css/theme.css" rel="stylesheet" />
@@ -53,13 +54,9 @@
             <div class="container pricing-container">
                 <div class="pricing-section">
 
-                    <h2 class="text-center pricing-title">Pricing Plans</h2>
+                    <h2 class="text-center">Pricing Plans</h2>
                     <p class="text-center pricing-subtitle">
-                        Choose a pricing plan that fits your business needs and budget, ensuring you get the best
-                        value
-                        and features to grow your online presence.
-                        <br>
-                        Already have an account? <span class="highlight">Upgrade your plan!</span>
+                        Choose a pricing plan that fits your business needs and budget.
                     </p>
 
                     <!-- Pricing Plans Container with horizontal scroll -->
@@ -228,6 +225,7 @@
 
             </div>
 
+
             <style>
                 /* Base Styles */
                 :root {
@@ -333,7 +331,7 @@
                     padding: 0.25rem 2rem;
                     font-size: 0.8rem;
                     font-weight: 500;
-                    transform: rotate(45deg);
+                    transform: rotate(35deg);
                     transform-origin: center;
                     z-index: 1;
                     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -439,7 +437,6 @@
 
                 .features-list .excluded {
                     color: #999;
-                    text-decoration: line-through;
                 }
 
                 .features-list .included i {
@@ -601,62 +598,6 @@
                 });
             </script>
         </section>
-        <!-- Modal -->
-        <!-- <div id="getStartedModal" class="modal">
-            <div class="modal-content">
-                <span class="close-btn">&times;</span>
-                <h5 class="flex center">Get Started</h5>
-                <form id="pricingForm" class="flex flex-column">
-                    <div class="mb-3">
-                        <label for="fullName" class="form-label">Full Name</label>
-                        <input type="text" class="form-control" id="fullName" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="phone" class="form-label">Phone Number</label>
-                        <input type="text" class="form-control" id="phone" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="store name" class="form-label">Store Name</label>
-                        <input type="text" class="form-control" id="store-name" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="store-Domain" class="form-label">Desired Domain</label>
-                        <div class="flex" style="gap: 10px;">
-                            <input type="text" class="form-control" id="store-Domain" required>
-                            <button type="button" id="checkDomainBtn" class="btn btn-sm btn-secondary">Check
-                                Availability</button>
-                        </div>
-                        <small id="domainStatus" class="text-muted"></small>
-                    </div>
-                    <div class="mb-3">
-                        <label for="cloud-id" class="form-label">Image Cloud ID</label>
-                        <input type="text" class="form-control" id="cloud-id" required>
-                        <a href="./docs.html" for="cloud id" class="form-label pointer">How i get my id ?</a>
-                    </div>
-                    <div class="mb-3">
-                        <label for="Store Details" class="form-label">Store Details</label>
-                        <textarea type="text" placeholder="ex:the store will selling mens perfumes and t-shirts"
-                            class="form-control" id="store-Details" required></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="planType" class="form-label">Selected Plan</label>
-                        <input type="text" class="form-control" id="PlanType" readonly>
-                    </div>
-                    <button type="submit" id="submit-req" class="btn btn-sm btn-primary">
-                        <p style="margin: 0px;" id="submit-text">Submit</p>
-                        <div id="preloader" class="preloader hidden">
-                            <div class="spinner-border"></div>
-                        </div>
-                    </button>
-                </form>
-
-            </div>
-        </div> -->
-
         <div id="getStartedModal" class="modal">
             <div class="modal-overlay"></div>
             <div class="modal-card">
@@ -804,6 +745,7 @@
 
             /* Modal Card */
             .modal-card {
+                margin: 10px;
                 position: relative;
                 width: 900px;
                 max-width: 95%;
@@ -825,12 +767,15 @@
 
             /* Modal Header */
             .pricing-modal-header {
+                width: -webkit-fill-available;
+                position: absolute;
                 padding: 1.5rem 2rem;
                 background: linear-gradient(149deg, #f0e7ff 0%, #510ddade 100%);
                 color: var(--white);
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+                z-index: 2;
             }
 
             .modal-title {
@@ -858,8 +803,30 @@
             }
 
             .modal-body {
+                z-index: 1;
+                margin-top: 45px;
                 padding: 2rem;
                 overflow-y: auto;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 /* For WebKit browsers (Chrome, Safari) */
                 &::-webkit-scrollbar {
@@ -1414,6 +1381,9 @@
             });
         });
     </script>
+
+    
+
 </body>
 
 </html>
