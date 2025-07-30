@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matager stores</title>
+    <link href="./matager.svg" rel="icon" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="./css/all.css">
+    <link rel="stylesheet" href="./css/alll.css">
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/inithialize-firebase.js"></script>
+</head>
+
+<body id="top">
+
+    <main>
+        <div id="preloader" class="preloader hidden">
+            <div class="spinner"></div>
+        </div>
+        <div class="formbold-form-wrapper" style="height: 1000px;">
+            <div id="table-of-stores">
+                <h5>All stores</h5>
+                <div class="search-bar flex center mb-20 mt-20">
+                    <input type="text" id="store-search-input" class="formbold-form-input w-300"
+                        placeholder="Search by Store ID">
+                </div>
+                <div class="table-wrapper mb-20 pt-16 overflow">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Email</th>
+                                <th scope="col">Store Name</th>
+                                <th scope="col">Store ID</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Plan</th>
+                                <th scope="col">Start</th>
+                                <th scope="col">End</th>
+                                <th class="hidden" scope="col">Store Details</th>
+                                <th scope="col">status</th>
+                                <th scope="col">amount</th>
+                                <th scope="col" class="manage-col">Manage</th>
+                            </tr>
+                        </thead>
+                        <tbody id="stores-table-body">
+                            <!-- Rows will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const databaseUrl = 'https://matager-f1f00-default-rtdb.firebaseio.com/Stores';
+            const auth = firebase.auth(); // Initialize Firebase Authentication
+
+            const options = {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+                hour: 'numeric',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true
+            };
+
+            const currentDate = new Date();
+
+            // Function to parse date string from 'en-GB' format
+            function parseDate(dateString) {
+                const [datePart, timePart] = dateString.split(', ');
+                const [day, month, year] = datePart.split('/').map(Number);
+                let [hour, minute, second] = timePart.split(/[: ]/).map(Number);
+                const period = timePart.includes('PM') ? 'PM' : 'AM';
+
+                if (period === 'PM' && hour !== 12) hour += 12;
+                if (period === 'AM' && hour === 12) hour = 0;
+
+                return new Date(year, month - 1, day, hour, minute, second || 0);
+            }
+
+            function formatDate(date) {
+                return date.toLocaleString('en-GB', options);
+            }
+
+            function addOneMonth(date) {
+                const newDate = new Date(date);
+                newDate.setMonth(newDate.getMonth() + 1);
+                return newDate;
+            }
+
+            // Fetch data from the database
+            fetch(`${databaseUrl}.json`)
+                .then(response => response.json())
+                .then(data => {
+                    const tbody = document.getElementById('stores-table-body');
+                    showPreloader("stores-table-body");
+                    tbody.innerHTML = ''; // Clear existing rows
+
+                    const reversedUids = Object.keys(data).reverse();
+
+                    for (const uid of reversedUids) {
+                        const storeInfo = data[uid]['store-info'];
+                        //calculate the cut
+
+                        const Cut = data[uid]['Matager']['matager-cut'];
+                        const roundedValue = Math.round(Cut); // Rounds to the nearest integer
+                        const matagerCut = roundedValue;
+
+                        const endingDate = parseDate(storeInfo['ending-date']);
+                        const isExpired = currentDate >= endingDate;
+                        const rowColor = isExpired ? '#ff000029' : '#00800029';
+                        const subscriptionStatus = isExpired ? 'Expired' : 'Active';
+
+                        const tr = document.createElement('tr');
+                        tr.style.background = rowColor;
+
+                        let renewalButton = '';
+                        if (isExpired) {
+                            renewalButton = `
+                        <button type="button" store-id="${uid}" class="formbold-form-label addbtn pointer open-order-btn p-7 renewal-btn">
+                            <i class="bi bi-arrow-clockwise"></i>
+                        </button>
+                    `;
+                        }
+
+                        tr.innerHTML = `
+                    <td class="hidden">${storeInfo['name'] || ''}</td>
+                    <td >${storeInfo['email'] || ''}</td>
+                    <td>${storeInfo['store-name'] || ''}</td>
+                    <td>${uid}</td>
+                    <td>${storeInfo['phone-number'] || ''}</td>
+                    <td>${storeInfo['plan'] || ''}</td>
+                    <td>${storeInfo['starting-date'] || ''}</td>
+                    <td>${storeInfo['ending-date'] || ''}</td>
+                    <td class="hidden">${storeInfo['store-details'] || ''}</td>
+                    <td>${subscriptionStatus}</td>
+                    <td>${matagerCut}</td>
+                    <td class="flex">
+                        ${renewalButton}
+                        <button type="button" store-id="${uid}" class="formbold-form-label addbtn pointer open-order-btn p-7 delete-btn">
+                            <i class="bi bi-x-circle"></i>
+                        </button>
+                        <button type="button" store-id="${uid}" class="formbold-form-label addbtn pointer open-order-btn p-7 changestatus">
+                           <i class="bi bi-pen"></i>
+                        </button>
+                    </td>
+                `;
+
+                        tbody.appendChild(tr);
+                    }
+
+                    tbody.addEventListener('click', function (e) {
+                        if (e.target.closest('.renewal-btn')) {
+                            const storeId = e.target.closest('.renewal-btn').getAttribute('store-id');
+                            const storeInfo = data[storeId]['store-info'];
+
+                            const endingDate = parseDate(storeInfo['ending-date']);
+                            const isExpired = currentDate >= endingDate;
+
+                            if (!isExpired) {
+                                // SweetAlert if the store has not expired
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Renewal Not Allowed',
+                                    text: "You can't renew a store that hasn't expired yet!",
+                                });
+                            } else {
+                                // Use the current date for the new starting date
+                                const newStartingDate = currentDate; // Set the new starting date to now
+                                const newEndingDate = addOneMonth(currentDate); // Set the new ending date to one month from now
+
+
+                                auth.currentUser.getIdToken().then((idToken) => {
+                                    // Update subscription dates
+                                    fetch(`${databaseUrl}/${storeId}/store-info.json?auth=${idToken}`, {
+                                        method: 'PATCH',
+                                        headers: { 'Content-Type': 'application/json' },
+                                        body: JSON.stringify({
+                                            'starting-date': formatDate(newStartingDate),
+                                            'ending-date': formatDate(newEndingDate),
+                                        }),
+                                    })
+                                        .then(response => {
+                                            if (response.ok) {
+                                                // Reset the Matager values to zero
+                                                fetch(`${databaseUrl}/${storeId}/Matager.json?auth=${idToken}`, {
+                                                    method: 'PATCH',
+                                                    headers: { 'Content-Type': 'application/json' },
+                                                    body: JSON.stringify({
+                                                        Amount: 0,
+                                                        count: 0,
+                                                        'matager-cut': 0,
+                                                    }),
+                                                })
+                                                    .then(matagerResponse => {
+                                                        if (matagerResponse.ok) {
+                                                            Swal.fire({
+                                                                icon: 'success',
+                                                                title: 'Renewal Successful',
+                                                                text: 'Store subscription has been renewed for one month starting from today.',
+                                                            }).then(() => window.location.reload());
+                                                        } else {
+                                                            console.error('Error resetting Matager values:', matagerResponse.statusText);
+                                                        }
+                                                    })
+                                                    .catch(error => {
+                                                        console.error('Error resetting Matager values:', error);
+                                                    });
+                                            } else {
+                                                console.error('Error renewing subscription:', response.statusText);
+                                            }
+                                        })
+                                        .catch(error => {
+                                            console.error('Error renewing subscription:', error);
+                                        });
+                                }).catch(error => {
+                                    console.error('Error getting ID token:', error);
+                                });
+
+                            }
+                        }
+                    });
+
+
+                    tbody.addEventListener('click', function (e) {
+                        if (e.target.closest('.delete-btn')) {
+                            const storeId = e.target.closest('.delete-btn').getAttribute('store-id');
+
+                            // SweetAlert confirmation dialog
+                            Swal.fire({
+                                title: 'Are you sure?',
+                                text: "You won't be able to revert this!",
+                                icon: 'warning',
+                                showCancelButton: true,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'Yes, delete it!'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    // If confirmed, proceed with deletion from Realtime Database
+                                    auth.currentUser.getIdToken().then((idToken) => {
+                                        fetch(`${databaseUrl}/${storeId}.json?auth=${idToken}`, {
+                                            method: 'DELETE'
+                                        }).then(response => {
+                                            if (response.ok) {
+                                                // Now delete the user from Firebase Authentication
+                                                return auth.currentUser.getIdToken(true).then((idToken) => {
+                                                    return fetch(`https://identitytoolkit.googleapis.com/v1/accounts:delete?key=AIzaSyDss53pHibCpqo87_1bhoUHkf8Idnj-Fig`, {
+                                                        method: 'POST',
+                                                        headers: {
+                                                            'Content-Type': 'application/json'
+                                                        },
+                                                        body: JSON.stringify({
+                                                            idToken: idToken
+                                                        })
+                                                    });
+                                                });
+                                            }
+                                        }).then(response => {
+                                            if (response && response.ok) {
+                                                Swal.fire({
+                                                    icon: 'success',
+                                                    title: 'Store Deleted',
+                                                    text: 'Store and user account have been deleted.',
+                                                }).then(() => window.location.reload());
+                                            }
+                                        }).catch(error => {
+                                            console.error('Error deleting store from Firebase Database or user from Firebase Auth:', error);
+                                            Swal.fire({
+                                                icon: 'error',
+                                                title: 'Error',
+                                                text: 'Failed to delete the store or user account.'
+                                            });
+                                        });
+                                    }).catch(error => {
+                                        console.error('Error getting ID token:', error);
+                                    });
+                                }
+                            });
+                        }
+                    })
+                    hidePreloader("myDataContainer");
+                })
+
+
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
+        });
+
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#store-search-input').on('keyup', function () {
+                var searchTerm = $(this).val().toLowerCase();
+                $('#stores-table-body tr').each(function () {
+                    var storeId = $(this).find('button[store-id]').attr('store-id').toLowerCase();
+                    if (storeId.indexOf(searchTerm) !== -1) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matager reports</title>
+    <link href="./matager.svg" rel="icon" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="./css/all.css">
+    <link rel="stylesheet" href="./css/alll.css">
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="./js/inithialize-firebase.js"></script>
+</head>
+
+<body id="top">
+    <main>
+        <div class="formbold-form-wrapper" style="height: 1000px;">
+            <div class="">
+                <h5>All Reports</h5>
+                <div class="mb-20 pt-16 overflow">
+                    <table class="table">
+                        <thead>
+                            <tr>
+
+                                <th scope="col">UID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Problem</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reports-table-body">
+                            <!-- Rows will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+                const databaseRef = firebase.database().ref('/reports');
+                const tableBody = document.getElementById('reports-table-body');
+
+                // Fetch data from Firebase Realtime Database
+                databaseRef.once('value', (snapshot) => {
+                    const reports = snapshot.val();
+
+                    if (!reports) {
+                        // Create a new row with the "No reports yet" message
+                        const noReportsRow = document.createElement('tr');
+                        const noReportsCell = document.createElement('td');
+
+                        noReportsCell.setAttribute('colspan', 1); // Adjust the colspan based on the number of columns
+                        noReportsCell.textContent = "No reports yet";
+                        noReportsCell.style.textAlign = 'center'; // Center the text
+
+                        noReportsRow.appendChild(noReportsCell);
+                        tableBody.appendChild(noReportsRow);
+                    } else {
+                        for (let id in reports) {
+                            const report = reports[id];
+                            const row = document.createElement('tr');
+
+                            row.innerHTML = `
+                    <td>${report.uid}</td>
+                    <td>${report.name}</td>
+                    <td>${report["problem-description"]}</td>
+                `;
+
+                            tableBody.appendChild(row);
+                        }
+                    }
+                });
+            });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matager store-setup</title>
+    <link href="./matager.svg" rel="icon" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="./css/all.css">
+    <link rel="stylesheet" href="./css/alll.css">
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="./js/inithialize-firebase.js"></script>
+</head>
+
+<body id="top">
+
+    <main>
+        <div id="preloader" class="preloader hidden">
+            <div class="spinner"></div>
+        </div>
+        <div class="formbold-form-wrapper" style="height: 1000px;">
+            <div id="table-of-stores">
+                <h5>Store Setup</h5>
+                <div class="mt-20">
+                    <label class="formbold-form-label mt-20" for="name">Store Name</label>
+                    <input class="formbold-form-input" type="text" id="input1" placeholder="Input 1">
+
+                    <label class="formbold-form-label mt-20" for="name">Store phone-number</label>
+                    <input class="formbold-form-input" type="text" id="input2" placeholder="Input 2">
+
+                    <label class="formbold-form-label mt-20" for="name">Store phone-number 2</label>
+                    <input class="formbold-form-input" type="text" id="input3" placeholder="Input 3">
+
+                    <label class="formbold-form-label mt-20" for="name">Store Email</label>
+                    <input class="formbold-form-input" type="text" id="input4" placeholder="Input 4">
+
+                    <div class="flex center mt-40 mb-20">
+                        <h5>Store Images Url's</h5>
+                    </div>
+
+                    <label class="formbold-form-label mt-20" for="name">Panner Url</label>
+                    <input class="formbold-form-input" type="text" id="input5" placeholder="Input 5">
+
+                    <label class="formbold-form-label mt-20" for="name">new arrival url</label>
+                    <input class="formbold-form-input" type="text" id="input6" placeholder="Input 6">
+
+                    <label class="formbold-form-label mt-20" for="name">Sale url</label>
+                    <input class="formbold-form-input" type="text" id="input7" placeholder="Input 7">
+
+                    <div class="flex center">
+                        <button class="formbold-btn w-300" id="createJsFile">Create JS Setup File</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </main>
+    <script>
+        document.getElementById('createJsFile').addEventListener('click', function () {
+            const input1 = document.getElementById('input1').value;
+            const input2 = document.getElementById('input2').value;
+            const input3 = document.getElementById('input3').value;
+            const input4 = document.getElementById('input4').value;
+            const input5 = document.getElementById('input5').value;
+            const input6 = document.getElementById('input6').value;
+            const input7 = document.getElementById('input7').value;
+
+            const jsContent = `
+            const store_name = "${input1}";
+            const store_phonenum = "${input2}";
+            const store_phonenum2 = "${input3}";
+            const store_email = "${input4}";
+            const store_pannerurl = "${input5}";
+            const store_newarrivalurl = "${input6}";
+            const store_saleurl = "${input7}";
+                `;
+
+            // Create a Blob from the JS content
+            const blob = new Blob([jsContent], { type: 'text/javascript' });
+            const url = URL.createObjectURL(blob);
+
+            // Create a link element to download the file
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'inputs.js'; // The name of the file to be downloaded
+            document.body.appendChild(link);
+            link.click();
+
+            // Remove the link from the document
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        });
+    </script>
+</body>
+
+</html>
